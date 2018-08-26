@@ -1,0 +1,1765 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{vui\_notebook}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Artificial Intelligence
+Nanodegree}\label{artificial-intelligence-nanodegree}
+
+\subsection{Voice User Interfaces}\label{voice-user-interfaces}
+
+\subsection{Project: Speech Recognition with Neural
+Networks}\label{project-speech-recognition-with-neural-networks}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+In this notebook, some template code has already been provided for you,
+and you will need to implement additional functionality to successfully
+complete this project. You will not need to modify the included code
+beyond what is requested. Sections that begin with
+\textbf{'(IMPLEMENTATION)'} in the header indicate that the following
+blocks of code will require additional functionality which you must
+provide. Please be sure to read the instructions carefully!
+
+\begin{quote}
+\textbf{Note}: Once you have completed all of the code implementations,
+you need to finalize your work by exporting the Jupyter Notebook as an
+HTML document. Before exporting the notebook to html, all of the code
+cells need to have been run so that reviewers can see the final
+implementation and output. You can then export the notebook by using the
+menu above and navigating to \n", "\textbf{File -\textgreater{} Download
+as -\textgreater{} HTML (.html)}. Include the finished document along
+with this notebook as your submission.
+\end{quote}
+
+In addition to implementing code, there will be questions that you must
+answer which relate to the project and your implementation. Each section
+where you will answer a question is preceded by a \textbf{'Question X'}
+header. Carefully read each question and provide thorough answers in the
+following text boxes that begin with \textbf{'Answer:'}. Your project
+submission will be evaluated based on your answers to each of the
+questions and the implementation you provide.
+
+\begin{quote}
+\textbf{Note:} Code and Markdown cells can be executed using the
+\textbf{Shift + Enter} keyboard shortcut. Markdown cells can be edited
+by double-clicking the cell to enter edit mode.
+\end{quote}
+
+The rubric contains \emph{optional} "Stand Out Suggestions" for
+enhancing the project beyond the minimum requirements. If you decide to
+pursue the "Stand Out Suggestions", you should include the code in this
+Jupyter notebook.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\subsection{Introduction}\label{introduction}
+
+In this notebook, you will build a deep neural network that functions as
+part of an end-to-end automatic speech recognition (ASR) pipeline! Your
+completed pipeline will accept raw audio as input and return a predicted
+transcription of the spoken language. The full pipeline is summarized in
+the figure below.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{STEP 1} is a pre-processing step that converts raw audio to
+  one of two feature representations that are commonly used for ASR.
+\item
+  \textbf{STEP 2} is an acoustic model which accepts audio features as
+  input and returns a probability distribution over all potential
+  transcriptions. After learning about the basic types of neural
+  networks that are often used for acoustic modeling, you will engage in
+  your own investigations, to design your own acoustic model!
+\item
+  \textbf{STEP 3} in the pipeline takes the output from the acoustic
+  model and returns a predicted transcription.
+\end{itemize}
+
+Feel free to use the links below to navigate the notebook: -
+Section \ref{thedata} - Section \ref{step1}: Acoustic Features for
+Speech Recognition - Section \ref{step2}: Deep Neural Networks for
+Acoustic Modeling - Section \ref{model0}: RNN - Section \ref{model1}:
+RNN + TimeDistributed Dense - Section \ref{model2}: CNN + RNN +
+TimeDistributed Dense - Section \ref{model3}: Deeper RNN +
+TimeDistributed Dense - Section \ref{model4}: Bidirectional RNN +
+TimeDistributed Dense - Section \ref{model5} - Section \ref{compare} -
+Section \ref{final} - Section \ref{step3}: Obtain Predictions
+
+ \#\# The Data
+
+We begin by investigating the dataset that will be used to train and
+evaluate your pipeline.
+\href{http://www.danielpovey.com/files/2015_icassp_librispeech.pdf}{LibriSpeech}
+is a large corpus of English-read speech, designed for training and
+evaluating models for ASR. The dataset contains 1000 hours of speech
+derived from audiobooks. We will work with a small subset in this
+project, since larger-scale data would take a long while to train.
+However, after completing this project, if you are interested in
+exploring further, you are encouraged to work with more of the data that
+is provided \href{http://www.openslr.org/12/}{online}.
+
+In the code cells below, you will use the \texttt{vis\_train\_features}
+module to visualize a training example. The supplied argument
+\texttt{index=0} tells the module to extract the first example in the
+training set. (You are welcome to change \texttt{index=0} to point to a
+different training example, if you like, but please \textbf{DO NOT}
+amend any other code in the cell.) The returned variables are: -
+\texttt{vis\_text} - transcribed text (label) for the training example.
+- \texttt{vis\_raw\_audio} - raw audio waveform for the training
+example. - \texttt{vis\_mfcc\_feature} - mel-frequency cepstral
+coefficients (MFCCs) for the training example. -
+\texttt{vis\_spectrogram\_feature} - spectrogram for the training
+example. - \texttt{vis\_audio\_path} - the file path to the training
+example.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{data\PYZus{}generator} \PY{k}{import} \PY{n}{vis\PYZus{}train\PYZus{}features}
+        
+        \PY{c+c1}{\PYZsh{} extract label and audio features for a single training example}
+        \PY{n}{vis\PYZus{}text}\PY{p}{,} \PY{n}{vis\PYZus{}raw\PYZus{}audio}\PY{p}{,} \PY{n}{vis\PYZus{}mfcc\PYZus{}feature}\PY{p}{,} \PY{n}{vis\PYZus{}spectrogram\PYZus{}feature}\PY{p}{,} \PY{n}{vis\PYZus{}audio\PYZus{}path} \PY{o}{=} \PY{n}{vis\PYZus{}train\PYZus{}features}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+There are 2136 total training examples.
+
+    \end{Verbatim}
+
+    The following code cell visualizes the audio waveform for your chosen
+example, along with the corresponding transcript. You also have the
+option to play the audio in the notebook!
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{Markdown}\PY{p}{,} \PY{n}{display}
+        \PY{k+kn}{from} \PY{n+nn}{data\PYZus{}generator} \PY{k}{import} \PY{n}{vis\PYZus{}train\PYZus{}features}\PY{p}{,} \PY{n}{plot\PYZus{}raw\PYZus{}audio}
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{Audio}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        
+        \PY{c+c1}{\PYZsh{} plot audio signal}
+        \PY{n}{plot\PYZus{}raw\PYZus{}audio}\PY{p}{(}\PY{n}{vis\PYZus{}raw\PYZus{}audio}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print length of audio signal}
+        \PY{n}{display}\PY{p}{(}\PY{n}{Markdown}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{**Shape of Audio Signal** : }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vis\PYZus{}raw\PYZus{}audio}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print transcript corresponding to audio clip}
+        \PY{n}{display}\PY{p}{(}\PY{n}{Markdown}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{**Transcript** : }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vis\PYZus{}text}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} play the audio file}
+        \PY{n}{Audio}\PY{p}{(}\PY{n}{vis\PYZus{}audio\PYZus{}path}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_3_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Shape of Audio Signal} : (103966,)
+
+    
+    \textbf{Transcript} : the last two days of the voyage bartley found
+almost intolerable
+
+    
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.lib.display.Audio object>
+\end{Verbatim}
+            
+     \#\# STEP 1: Acoustic Features for Speech Recognition
+
+For this project, you won't use the raw audio waveform as input to your
+model. Instead, we provide code that first performs a pre-processing
+step to convert the raw audio to a feature representation that has
+historically proven successful for ASR models. Your acoustic model will
+accept the feature representation as input.
+
+In this project, you will explore two possible feature representations.
+\emph{After completing the project}, if you'd like to read more about
+deep learning architectures that can accept raw audio input, you are
+encouraged to explore this
+\href{https://pdfs.semanticscholar.org/a566/cd4a8623d661a4931814d9dffc72ecbf63c4.pdf}{research
+paper}.
+
+\subsubsection{Spectrograms}\label{spectrograms}
+
+The first option for an audio feature representation is the
+\href{https://www.youtube.com/watch?v=_FatxGN3vAM}{spectrogram}. In
+order to complete this project, you will \textbf{not} need to dig deeply
+into the details of how a spectrogram is calculated; but, if you are
+curious, the code for calculating the spectrogram was borrowed from
+\href{https://github.com/baidu-research/ba-dls-deepspeech}{this
+repository}. The implementation appears in the \texttt{utils.py} file in
+your repository.
+
+The code that we give you returns the spectrogram as a 2D tensor, where
+the first (\emph{vertical}) dimension indexes time, and the second
+(\emph{horizontal}) dimension indexes frequency. To speed the
+convergence of your algorithm, we have also normalized the spectrogram.
+(You can see this quickly in the visualization below by noting that the
+mean value hovers around zero, and most entries in the tensor assume
+values close to zero.)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{data\PYZus{}generator} \PY{k}{import} \PY{n}{plot\PYZus{}spectrogram\PYZus{}feature}
+        
+        \PY{c+c1}{\PYZsh{} plot normalized spectrogram}
+        \PY{n}{plot\PYZus{}spectrogram\PYZus{}feature}\PY{p}{(}\PY{n}{vis\PYZus{}spectrogram\PYZus{}feature}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print shape of spectrogram}
+        \PY{n}{display}\PY{p}{(}\PY{n}{Markdown}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{**Shape of Spectrogram** : }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vis\PYZus{}spectrogram\PYZus{}feature}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Shape of Spectrogram} : (470, 161)
+
+    
+    \subsubsection{Mel-Frequency Cepstral Coefficients
+(MFCCs)}\label{mel-frequency-cepstral-coefficients-mfccs}
+
+The second option for an audio feature representation is
+\href{https://en.wikipedia.org/wiki/Mel-frequency_cepstrum}{MFCCs}. You
+do \textbf{not} need to dig deeply into the details of how MFCCs are
+calculated, but if you would like more information, you are welcome to
+peruse the
+\href{https://github.com/jameslyons/python_speech_features}{documentation}
+of the \texttt{python\_speech\_features} Python package. Just as with
+the spectrogram features, the MFCCs are normalized in the supplied code.
+
+The main idea behind MFCC features is the same as spectrogram features:
+at each time window, the MFCC feature yields a feature vector that
+characterizes the sound within the window. Note that the MFCC feature is
+much lower-dimensional than the spectrogram feature, which could help an
+acoustic model to avoid overfitting to the training dataset.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{from} \PY{n+nn}{data\PYZus{}generator} \PY{k}{import} \PY{n}{plot\PYZus{}mfcc\PYZus{}feature}
+        
+        \PY{c+c1}{\PYZsh{} plot normalized MFCC}
+        \PY{n}{plot\PYZus{}mfcc\PYZus{}feature}\PY{p}{(}\PY{n}{vis\PYZus{}mfcc\PYZus{}feature}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print shape of MFCC}
+        \PY{n}{display}\PY{p}{(}\PY{n}{Markdown}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{**Shape of MFCC** : }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{vis\PYZus{}mfcc\PYZus{}feature}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_7_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Shape of MFCC} : (470, 13)
+
+    
+    When you construct your pipeline, you will be able to choose to use
+either spectrogram or MFCC features. If you would like to see different
+implementations that make use of MFCCs and/or spectrograms, please check
+out the links below: - This
+\href{https://github.com/baidu-research/ba-dls-deepspeech}{repository}
+uses spectrograms. - This
+\href{https://github.com/mozilla/DeepSpeech}{repository} uses MFCCs. -
+This
+\href{https://github.com/buriburisuri/speech-to-text-wavenet}{repository}
+also uses MFCCs. - This
+\href{https://github.com/pannous/tensorflow-speech-recognition/blob/master/speech_data.py}{repository}
+experiments with raw audio, spectrograms, and MFCCs as features.
+
+     \#\# STEP 2: Deep Neural Networks for Acoustic Modeling
+
+In this section, you will experiment with various neural network
+architectures for acoustic modeling.
+
+You will begin by training five relatively simple architectures.
+\textbf{Model 0} is provided for you. You will write code to implement
+\textbf{Models 1}, \textbf{2}, \textbf{3}, and \textbf{4}. If you would
+like to experiment further, you are welcome to create and train more
+models under the \textbf{Models 5+} heading.
+
+All models will be specified in the \texttt{sample\_models.py} file.
+After importing the \texttt{sample\_models} module, you will train your
+architectures in the notebook.
+
+After experimenting with the five simple architectures, you will have
+the opportunity to compare their performance. Based on your findings,
+you will construct a deeper architecture that is designed to outperform
+all of the shallow models.
+
+For your convenience, we have designed the notebook so that each model
+can be specified and trained on separate occasions. That is, say you
+decide to take a break from the notebook after training \textbf{Model
+1}. Then, you need not re-execute all prior code cells in the notebook
+before training \textbf{Model 2}. You need only re-execute the code cell
+below, that is marked with
+\textbf{\texttt{RUN\ THIS\ CODE\ CELL\ IF\ YOU\ ARE\ RESUMING\ THE\ NOTEBOOK\ AFTER\ A\ BREAK}},
+before transitioning to the code cells corresponding to \textbf{Model
+2}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        \PY{c+c1}{\PYZsh{} RUN THIS CODE CELL IF YOU ARE RESUMING THE NOTEBOOK AFTER A BREAK \PYZsh{}}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}\PYZsh{}}
+        
+        \PY{c+c1}{\PYZsh{} allocate 50\PYZpc{} of GPU memory (if you like, feel free to change this)}
+        \PY{k+kn}{from} \PY{n+nn}{keras}\PY{n+nn}{.}\PY{n+nn}{backend}\PY{n+nn}{.}\PY{n+nn}{tensorflow\PYZus{}backend} \PY{k}{import} \PY{n}{set\PYZus{}session}
+        \PY{k+kn}{import} \PY{n+nn}{tensorflow} \PY{k}{as} \PY{n+nn}{tf} 
+        \PY{n}{config} \PY{o}{=} \PY{n}{tf}\PY{o}{.}\PY{n}{ConfigProto}\PY{p}{(}\PY{p}{)}
+        \PY{n}{config}\PY{o}{.}\PY{n}{gpu\PYZus{}options}\PY{o}{.}\PY{n}{per\PYZus{}process\PYZus{}gpu\PYZus{}memory\PYZus{}fraction} \PY{o}{=} \PY{l+m+mf}{0.5}
+        \PY{n}{set\PYZus{}session}\PY{p}{(}\PY{n}{tf}\PY{o}{.}\PY{n}{Session}\PY{p}{(}\PY{n}{config}\PY{o}{=}\PY{n}{config}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} watch for any changes in the sample\PYZus{}models module, and reload it automatically}
+        \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} autoreload
+        \PY{o}{\PYZpc{}}\PY{k}{autoreload} 2
+        \PY{c+c1}{\PYZsh{}\PYZpc{}reload\PYZus{}ext autoreload}
+        \PY{c+c1}{\PYZsh{} import NN architectures for speech recognition}
+        \PY{k+kn}{from} \PY{n+nn}{sample\PYZus{}models} \PY{k}{import} \PY{o}{*}
+        \PY{c+c1}{\PYZsh{} import function for training acoustic model}
+        \PY{k+kn}{from} \PY{n+nn}{train\PYZus{}utils} \PY{k}{import} \PY{n}{train\PYZus{}model}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Using TensorFlow backend.
+
+    \end{Verbatim}
+
+     \#\#\# Model 0: RNN
+
+Given their effectiveness in modeling sequential data, the first
+acoustic model you will use is an RNN. As shown in the figure below, the
+RNN we supply to you will take the time sequence of audio features as
+input.
+
+At each time step, the speaker pronounces one of 28 possible characters,
+including each of the 26 letters in the English alphabet, along with a
+space character (" "), and an apostrophe (').
+
+The output of the RNN at each time step is a vector of probabilities
+with 29 entries, where the \(i\)-th entry encodes the probability that
+the \(i\)-th character is spoken in the time sequence. (The extra 29th
+character is an empty "character" used to pad training examples within
+batches containing uneven lengths.) If you would like to peek under the
+hood at how characters are mapped to indices in the probability vector,
+look at the \texttt{char\_map.py} file in the repository. The figure
+below shows an equivalent, rolled depiction of the RNN that shows the
+output layer in greater detail.
+
+The model has already been specified for you in Keras. To import it, you
+need only run the code cell below.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{model\PYZus{}0} \PY{o}{=} \PY{n}{simple\PYZus{}rnn\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to 13 if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+rnn (GRU)                    (None, None, 29)          16617     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 16,617
+Trainable params: 16,617
+Non-trainable params: 0
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    As explored in the lesson, you will train the acoustic model with the
+\href{http://www.cs.toronto.edu/~graves/icml_2006.pdf}{CTC loss}
+criterion. Custom loss functions take a bit of hacking in Keras, and so
+we have implemented the CTC loss function for you, so that you can focus
+on trying out as many deep learning architectures as possible :). If
+you'd like to peek at the implementation details, look at the
+\texttt{add\_ctc\_loss} function within the \texttt{train\_utils.py}
+file in the repository.
+
+To train your architecture, you will use the \texttt{train\_model}
+function within the \texttt{train\_utils} module; it has already been
+imported in one of the above code cells. The \texttt{train\_model}
+function takes three \textbf{required} arguments: -
+\texttt{input\_to\_softmax} - a Keras model instance. -
+\texttt{pickle\_path} - the name of the pickle file where the loss
+history will be saved. - \texttt{save\_model\_path} - the name of the
+HDF5 file where the model will be saved.
+
+If we have already supplied values for \texttt{input\_to\_softmax},
+\texttt{pickle\_path}, and \texttt{save\_model\_path}, please \textbf{DO
+NOT} modify these values.
+
+There are several \textbf{optional} arguments that allow you to have
+more control over the training process. You are welcome to, but not
+required to, supply your own values for these arguments. -
+\texttt{minibatch\_size} - the size of the minibatches that are
+generated while training the model (default: \texttt{20}). -
+\texttt{spectrogram} - Boolean value dictating whether spectrogram
+(\texttt{True}) or MFCC (\texttt{False}) features are used for training
+(default: \texttt{True}). - \texttt{mfcc\_dim} - the size of the feature
+dimension to use when generating MFCC features (default: \texttt{13}). -
+\texttt{optimizer} - the Keras optimizer used to train the model
+(default:
+\texttt{SGD(lr=0.02,\ decay=1e-6,\ momentum=0.9,\ nesterov=True,\ clipnorm=5)}).\\
+- \texttt{epochs} - the number of epochs to use to train the model
+(default: \texttt{20}). If you choose to modify this parameter, make
+sure that it is \emph{at least} 20. - \texttt{verbose} - controls the
+verbosity of the training output in the \texttt{model.fit\_generator}
+method (default: \texttt{1}). - \texttt{sort\_by\_duration} - Boolean
+value dictating whether the training and validation sets are sorted by
+(increasing) duration before the start of the first epoch (default:
+\texttt{False}).
+
+The \texttt{train\_model} function defaults to using spectrogram
+features; if you choose to use these features, note that the acoustic
+model in \texttt{simple\_rnn\_model} should have
+\texttt{input\_dim=161}. Otherwise, if you choose to use MFCC features,
+the acoustic model should have \texttt{input\_dim=13}.
+
+We have chosen to use \texttt{GRU} units in the supplied RNN. If you
+would like to experiment with \texttt{LSTM} or \texttt{SimpleRNN} cells,
+feel free to do so here. If you change the \texttt{GRU} units to
+\texttt{SimpleRNN} cells in \texttt{simple\_rnn\_model}, you may notice
+that the loss quickly becomes undefined (\texttt{nan}) - you are
+strongly encouraged to check this for yourself! This is due to the
+\href{http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/}{exploding
+gradients problem}. We have already implemented
+\href{https://arxiv.org/pdf/1211.5063.pdf}{gradient clipping} in your
+optimizer to help you avoid this issue.
+
+\textbf{IMPORTANT NOTE:} If you notice that your gradient has exploded
+in any of the models below, feel free to explore more with gradient
+clipping (the \texttt{clipnorm} argument in your optimizer) or swap out
+any \texttt{SimpleRNN} cells for \texttt{LSTM} or \texttt{GRU} cells.
+You can also try restarting the kernel to restart the training process.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}0}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}0.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}0.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 217s - loss: 846.1823 - val\_loss: 738.3235
+Epoch 2/20
+106/106 [==============================] - 220s - loss: 758.5558 - val\_loss: 723.0735
+Epoch 3/20
+106/106 [==============================] - 218s - loss: 752.7000 - val\_loss: 722.7238
+Epoch 4/20
+106/106 [==============================] - 217s - loss: 750.8803 - val\_loss: 733.8034
+Epoch 5/20
+106/106 [==============================] - 217s - loss: 752.7090 - val\_loss: 726.0564
+Epoch 6/20
+106/106 [==============================] - 216s - loss: 752.0134 - val\_loss: 724.1249
+Epoch 7/20
+106/106 [==============================] - 216s - loss: 752.6499 - val\_loss: 721.0272
+Epoch 8/20
+106/106 [==============================] - 215s - loss: 752.1670 - val\_loss: 726.1566
+Epoch 9/20
+106/106 [==============================] - 215s - loss: 750.2802 - val\_loss: 726.0597
+Epoch 10/20
+106/106 [==============================] - 217s - loss: 751.1426 - val\_loss: 730.6986
+Epoch 11/20
+106/106 [==============================] - 216s - loss: 750.5847 - val\_loss: 725.7304
+Epoch 12/20
+106/106 [==============================] - 217s - loss: 751.1008 - val\_loss: 725.2134
+Epoch 13/20
+106/106 [==============================] - 216s - loss: 750.8322 - val\_loss: 724.6855
+Epoch 14/20
+106/106 [==============================] - 217s - loss: 750.6848 - val\_loss: 728.9491
+Epoch 15/20
+106/106 [==============================] - 215s - loss: 751.9130 - val\_loss: 722.1941
+Epoch 16/20
+106/106 [==============================] - 216s - loss: 749.2728 - val\_loss: 728.1164
+Epoch 17/20
+106/106 [==============================] - 218s - loss: 750.8959 - val\_loss: 729.0439
+Epoch 18/20
+106/106 [==============================] - 214s - loss: 751.3306 - val\_loss: 724.4410
+Epoch 19/20
+106/106 [==============================] - 216s - loss: 750.5255 - val\_loss: 727.1911
+Epoch 20/20
+106/106 [==============================] - 215s - loss: 752.3071 - val\_loss: 722.2373
+
+    \end{Verbatim}
+
+     \#\#\# (IMPLEMENTATION) Model 1: RNN + TimeDistributed Dense
+
+Read about the \href{https://keras.io/layers/wrappers/}{TimeDistributed}
+wrapper and the
+\href{https://keras.io/layers/normalization/}{BatchNormalization} layer
+in the Keras documentation. For your next architecture, you will add
+\href{https://arxiv.org/pdf/1510.01378.pdf}{batch normalization} to the
+recurrent layer to reduce training times. The \texttt{TimeDistributed}
+layer will be used to find more complex patterns in the dataset. The
+unrolled snapshot of the architecture is depicted below.
+
+The next figure shows an equivalent, rolled depiction of the RNN that
+shows the (\texttt{TimeDistrbuted}) dense and output layers in greater
+detail.
+
+Use your research to complete the \texttt{rnn\_model} function within
+the \texttt{sample\_models.py} file. The function should specify an
+architecture that satisfies the following requirements: - The first
+layer of the neural network should be an RNN (\texttt{SimpleRNN},
+\texttt{LSTM}, or \texttt{GRU}) that takes the time sequence of audio
+features as input. We have added \texttt{GRU} units for you, but feel
+free to change \texttt{GRU} to \texttt{SimpleRNN} or \texttt{LSTM}, if
+you like! - Whereas the architecture in \texttt{simple\_rnn\_model}
+treated the RNN output as the final layer of the model, you will use the
+output of your RNN as a hidden layer. Use \texttt{TimeDistributed} to
+apply a \texttt{Dense} layer to each of the time steps in the RNN
+output. Ensure that each \texttt{Dense} layer has \texttt{output\_dim}
+units.
+
+Use the code cell below to load your model into the \texttt{model\_1}
+variable. Use a value for \texttt{input\_dim} that matches your chosen
+audio features, and feel free to change the values for \texttt{units}
+and \texttt{activation} to tweak the behavior of your recurrent layer.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{model\PYZus{}1} \PY{o}{=} \PY{n}{rnn\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,} \PY{c+c1}{\PYZsh{} change to 13 if you would like to use MFCC features}
+                            \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                            \PY{n}{activation}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{relu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+rnn (GRU)                    (None, None, 200)         217200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+batch\_normalization\_1 (Batch (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_1 (TimeDist (None, None, 29)          5829      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 223,829
+Trainable params: 223,429
+Non-trainable params: 400
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    Please execute the code cell below to train the neural network you
+specified in \texttt{input\_to\_softmax}. After the model has finished
+training, the model is
+\href{https://keras.io/getting-started/faq/\#how-can-i-save-a-keras-model}{saved}
+in the HDF5 file \texttt{model\_1.h5}. The loss history is
+\href{https://wiki.python.org/moin/UsingPickle}{saved} in
+\texttt{model\_1.pickle}. You are welcome to tweak any of the optional
+parameters while calling the \texttt{train\_model} function, but this is
+not required.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}1}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}1.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}1.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 223s - loss: 290.5598 - val\_loss: 230.8554
+Epoch 2/20
+106/106 [==============================] - 224s - loss: 209.1085 - val\_loss: 191.8883
+Epoch 3/20
+106/106 [==============================] - 222s - loss: 188.6171 - val\_loss: 184.1576
+Epoch 4/20
+106/106 [==============================] - 221s - loss: 170.2229 - val\_loss: 163.9036
+Epoch 5/20
+106/106 [==============================] - 222s - loss: 158.1848 - val\_loss: 158.8997
+Epoch 6/20
+106/106 [==============================] - 223s - loss: 151.5104 - val\_loss: 152.4414
+Epoch 7/20
+106/106 [==============================] - 222s - loss: 146.0858 - val\_loss: 148.4428
+Epoch 8/20
+106/106 [==============================] - 222s - loss: 141.8277 - val\_loss: 145.9764
+Epoch 9/20
+106/106 [==============================] - 220s - loss: 140.4495 - val\_loss: 148.0370
+Epoch 10/20
+106/106 [==============================] - 220s - loss: 137.8570 - val\_loss: 142.0655
+Epoch 11/20
+106/106 [==============================] - 221s - loss: 134.0972 - val\_loss: 143.3311
+Epoch 12/20
+106/106 [==============================] - 219s - loss: 134.1997 - val\_loss: 143.0942
+Epoch 13/20
+106/106 [==============================] - 220s - loss: 132.5711 - val\_loss: 143.2310
+Epoch 14/20
+106/106 [==============================] - 221s - loss: 129.9397 - val\_loss: 137.7828
+Epoch 15/20
+106/106 [==============================] - 222s - loss: 128.7244 - val\_loss: 141.8105
+Epoch 16/20
+106/106 [==============================] - 222s - loss: 129.2268 - val\_loss: 140.7189
+Epoch 17/20
+106/106 [==============================] - 222s - loss: 127.5657 - val\_loss: 141.7533
+Epoch 18/20
+106/106 [==============================] - 220s - loss: 129.8081 - val\_loss: 148.0901
+Epoch 19/20
+106/106 [==============================] - 222s - loss: 130.0277 - val\_loss: 142.2137
+Epoch 20/20
+106/106 [==============================] - 222s - loss: 128.6848 - val\_loss: 142.4832
+
+    \end{Verbatim}
+
+     \#\#\# (IMPLEMENTATION) Model 2: CNN + RNN + TimeDistributed Dense
+
+The architecture in \texttt{cnn\_rnn\_model} adds an additional level of
+complexity, by introducing a
+\href{https://keras.io/layers/convolutional/\#conv1d}{1D convolution
+layer}.
+
+This layer incorporates many arguments that can be (optionally) tuned
+when calling the \texttt{cnn\_rnn\_model} module. We provide sample
+starting parameters, which you might find useful if you choose to use
+spectrogram audio features.
+
+If you instead want to use MFCC features, these arguments will have to
+be tuned. Note that the current architecture only supports values of
+\texttt{\textquotesingle{}same\textquotesingle{}} or
+\texttt{\textquotesingle{}valid\textquotesingle{}} for the
+\texttt{conv\_border\_mode} argument.
+
+When tuning the parameters, be careful not to choose settings that make
+the convolutional layer overly small. If the temporal length of the CNN
+layer is shorter than the length of the transcribed text label, your
+code will throw an error.
+
+Before running the code cell below, you must modify the
+\texttt{cnn\_rnn\_model} function in \texttt{sample\_models.py}. Please
+add batch normalization to the recurrent layer, and provide the same
+\texttt{TimeDistributed} layer as before.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{model\PYZus{}2} \PY{o}{=} \PY{n}{cnn\PYZus{}rnn\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,} \PY{c+c1}{\PYZsh{} change to 13 if you would like to use MFCC features}
+                                \PY{n}{filters}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{kernel\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{,} 
+                                \PY{n}{conv\PYZus{}stride}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}border\PYZus{}mode}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{valid}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+conv1d (Conv1D)              (None, None, 200)         354400    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_conv\_1d (BatchNormalizati (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+rnn (SimpleRNN)              (None, None, 200)         80200     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+batch\_normalization\_2 (Batch (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_2 (TimeDist (None, None, 29)          5829      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 442,029
+Trainable params: 441,229
+Non-trainable params: 800
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    Please execute the code cell below to train the neural network you
+specified in \texttt{input\_to\_softmax}. After the model has finished
+training, the model is
+\href{https://keras.io/getting-started/faq/\#how-can-i-save-a-keras-model}{saved}
+in the HDF5 file \texttt{model\_2.h5}. The loss history is
+\href{https://wiki.python.org/moin/UsingPickle}{saved} in
+\texttt{model\_2.pickle}. You are welcome to tweak any of the optional
+parameters while calling the \texttt{train\_model} function, but this is
+not required.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}2}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}2.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}2.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 73s - loss: 229.4081 - val\_loss: 207.8255
+Epoch 2/20
+106/106 [==============================] - 58s - loss: 164.4500 - val\_loss: 153.3692
+Epoch 3/20
+106/106 [==============================] - 59s - loss: 144.5539 - val\_loss: 143.0789
+Epoch 4/20
+106/106 [==============================] - 58s - loss: 134.3263 - val\_loss: 137.5987
+Epoch 5/20
+106/106 [==============================] - 57s - loss: 126.0374 - val\_loss: 134.7341
+Epoch 6/20
+106/106 [==============================] - 57s - loss: 119.9074 - val\_loss: 133.6895
+Epoch 7/20
+106/106 [==============================] - 58s - loss: 115.2991 - val\_loss: 132.0954
+Epoch 8/20
+106/106 [==============================] - 57s - loss: 110.6409 - val\_loss: 130.1110
+Epoch 9/20
+106/106 [==============================] - 58s - loss: 106.6486 - val\_loss: 131.6153
+Epoch 10/20
+106/106 [==============================] - 57s - loss: 103.1217 - val\_loss: 128.9589
+Epoch 11/20
+106/106 [==============================] - 58s - loss: 99.8565 - val\_loss: 128.0771
+Epoch 12/20
+106/106 [==============================] - 59s - loss: 96.7729 - val\_loss: 129.5610
+Epoch 13/20
+106/106 [==============================] - 57s - loss: 93.6450 - val\_loss: 130.7468
+Epoch 14/20
+106/106 [==============================] - 58s - loss: 91.1445 - val\_loss: 129.5885
+Epoch 15/20
+106/106 [==============================] - 57s - loss: 88.0935 - val\_loss: 128.4457
+Epoch 16/20
+106/106 [==============================] - 58s - loss: 85.3392 - val\_loss: 134.6788
+Epoch 17/20
+106/106 [==============================] - 58s - loss: 83.0716 - val\_loss: 131.4216
+Epoch 18/20
+106/106 [==============================] - 57s - loss: 80.4968 - val\_loss: 136.1328
+Epoch 19/20
+106/106 [==============================] - 57s - loss: 78.3020 - val\_loss: 135.1734
+Epoch 20/20
+106/106 [==============================] - 57s - loss: 76.3312 - val\_loss: 139.0822
+
+    \end{Verbatim}
+
+     \#\#\# (IMPLEMENTATION) Model 3: Deeper RNN + TimeDistributed Dense
+
+Review the code in \texttt{rnn\_model}, which makes use of a single
+recurrent layer. Now, specify an architecture in
+\texttt{deep\_rnn\_model} that utilizes a variable number
+\texttt{recur\_layers} of recurrent layers. The figure below shows the
+architecture that should be returned if \texttt{recur\_layers=2}. In the
+figure, the output sequence of the first recurrent layer is used as
+input for the next recurrent layer.
+
+Feel free to change the supplied values of \texttt{units} to whatever
+you think performs best. You can change the value of
+\texttt{recur\_layers}, as long as your final value is greater than 1.
+(As a quick check that you have implemented the additional functionality
+in \texttt{deep\_rnn\_model} correctly, make sure that the architecture
+that you specify here is identical to \texttt{rnn\_model} if
+\texttt{recur\_layers=1}.)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{model\PYZus{}3} \PY{o}{=} \PY{n}{deep\PYZus{}rnn\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,} \PY{c+c1}{\PYZsh{} change to 13 if you would like to use MFCC features}
+                                 \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                 \PY{n}{recur\PYZus{}layers}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)} 
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+rnn\_0 (GRU)                  (None, None, 200)         217200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_rnn\_0 (BatchNormalization (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+rnn\_1 (GRU)                  (None, None, 200)         240600    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_rnn\_1 (BatchNormalization (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_3 (TimeDist (None, None, 29)          5829      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 465,229
+Trainable params: 464,429
+Non-trainable params: 800
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    Please execute the code cell below to train the neural network you
+specified in \texttt{input\_to\_softmax}. After the model has finished
+training, the model is
+\href{https://keras.io/getting-started/faq/\#how-can-i-save-a-keras-model}{saved}
+in the HDF5 file \texttt{model\_3.h5}. The loss history is
+\href{https://wiki.python.org/moin/UsingPickle}{saved} in
+\texttt{model\_3.pickle}. You are welcome to tweak any of the optional
+parameters while calling the \texttt{train\_model} function, but this is
+not required.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}3}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}3.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}3.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 376s - loss: 268.9038 - val\_loss: 226.9563
+Epoch 2/20
+106/106 [==============================] - 381s - loss: 215.7682 - val\_loss: 194.9369
+Epoch 3/20
+106/106 [==============================] - 381s - loss: 186.4987 - val\_loss: 175.0191
+Epoch 4/20
+106/106 [==============================] - 377s - loss: 158.6155 - val\_loss: 154.6243
+Epoch 5/20
+106/106 [==============================] - 378s - loss: 144.9275 - val\_loss: 143.8197
+Epoch 6/20
+106/106 [==============================] - 378s - loss: 137.6030 - val\_loss: 143.9919
+Epoch 7/20
+106/106 [==============================] - 380s - loss: 134.3868 - val\_loss: 138.0939
+Epoch 8/20
+106/106 [==============================] - 376s - loss: 130.9111 - val\_loss: 135.4136
+Epoch 9/20
+106/106 [==============================] - 380s - loss: 126.1955 - val\_loss: 135.4271
+Epoch 10/20
+106/106 [==============================] - 379s - loss: 124.9726 - val\_loss: 135.4169
+Epoch 11/20
+106/106 [==============================] - 377s - loss: 128.0290 - val\_loss: 134.8902
+Epoch 12/20
+106/106 [==============================] - 378s - loss: 122.0262 - val\_loss: 133.4160
+Epoch 13/20
+106/106 [==============================] - 379s - loss: 120.1035 - val\_loss: 135.3475
+Epoch 14/20
+106/106 [==============================] - 379s - loss: 119.8266 - val\_loss: 135.5340
+Epoch 15/20
+106/106 [==============================] - 378s - loss: 121.8938 - val\_loss: 140.6380
+Epoch 16/20
+106/106 [==============================] - 380s - loss: 118.5335 - val\_loss: 127.8746
+Epoch 17/20
+106/106 [==============================] - 378s - loss: 115.4578 - val\_loss: 129.5471
+Epoch 18/20
+106/106 [==============================] - 379s - loss: 119.3298 - val\_loss: 130.6431
+Epoch 19/20
+106/106 [==============================] - 381s - loss: 121.4904 - val\_loss: 133.5924
+Epoch 20/20
+106/106 [==============================] - 383s - loss: 122.3033 - val\_loss: 132.9569
+
+    \end{Verbatim}
+
+     \#\#\# (IMPLEMENTATION) Model 4: Bidirectional RNN + TimeDistributed
+Dense
+
+Read about the \href{https://keras.io/layers/wrappers/}{Bidirectional}
+wrapper in the Keras documentation. For your next architecture, you will
+specify an architecture that uses a single bidirectional RNN layer,
+before a (\texttt{TimeDistributed}) dense layer. The added value of a
+bidirectional RNN is described well in
+\href{http://www.cs.toronto.edu/~hinton/absps/DRNN_speech.pdf}{this
+paper}. \textgreater{} One shortcoming of conventional RNNs is that they
+are only able to make use of previous context. In speech recognition,
+where whole utterances are transcribed at once, there is no reason not
+to exploit future context as well. Bidirectional RNNs (BRNNs) do this by
+processing the data in both directions with two separate hidden layers
+which are then fed forwards to the same output layer.
+
+Before running the code cell below, you must complete the
+\texttt{bidirectional\_rnn\_model} function in
+\texttt{sample\_models.py}. Feel free to use \texttt{SimpleRNN},
+\texttt{LSTM}, or \texttt{GRU} units. When specifying the
+\texttt{Bidirectional} wrapper, use
+\texttt{merge\_mode=\textquotesingle{}concat\textquotesingle{}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{model\PYZus{}4} \PY{o}{=} \PY{n}{bidirectional\PYZus{}rnn\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,} \PY{c+c1}{\PYZsh{} change to 13 if you would like to use MFCC features}
+                                          \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_1 (Bidirection (None, None, 400)         434400    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_1 (TimeDist (None, None, 29)          11629     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 446,029
+Trainable params: 446,029
+Non-trainable params: 0
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    Please execute the code cell below to train the neural network you
+specified in \texttt{input\_to\_softmax}. After the model has finished
+training, the model is
+\href{https://keras.io/getting-started/faq/\#how-can-i-save-a-keras-model}{saved}
+in the HDF5 file \texttt{model\_4.h5}. The loss history is
+\href{https://wiki.python.org/moin/UsingPickle}{saved} in
+\texttt{model\_4.pickle}. You are welcome to tweak any of the optional
+parameters while calling the \texttt{train\_model} function, but this is
+not required.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}4}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}4.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}4.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 373s - loss: 307.2531 - val\_loss: 257.1539
+Epoch 2/20
+106/106 [==============================] - 374s - loss: 236.4832 - val\_loss: 217.0753
+Epoch 3/20
+106/106 [==============================] - 368s - loss: 218.8385 - val\_loss: 196.8267
+Epoch 4/20
+106/106 [==============================] - 374s - loss: 195.0031 - val\_loss: 180.0640
+Epoch 5/20
+106/106 [==============================] - 374s - loss: 178.1315 - val\_loss: 168.1015
+Epoch 6/20
+106/106 [==============================] - 375s - loss: 165.9992 - val\_loss: 158.6083
+Epoch 7/20
+106/106 [==============================] - 376s - loss: 155.7153 - val\_loss: 153.4010
+Epoch 8/20
+106/106 [==============================] - 376s - loss: 148.2796 - val\_loss: 146.4719
+Epoch 9/20
+106/106 [==============================] - 374s - loss: 142.0148 - val\_loss: 144.5377
+Epoch 10/20
+106/106 [==============================] - 369s - loss: 136.0860 - val\_loss: 138.1854
+Epoch 11/20
+106/106 [==============================] - 366s - loss: 131.4920 - val\_loss: 136.1667
+Epoch 12/20
+106/106 [==============================] - 365s - loss: 127.2406 - val\_loss: 134.8937
+Epoch 13/20
+106/106 [==============================] - 365s - loss: 123.4216 - val\_loss: 133.7760
+Epoch 14/20
+106/106 [==============================] - 366s - loss: 120.2525 - val\_loss: 131.1951
+Epoch 15/20
+106/106 [==============================] - 365s - loss: 117.0380 - val\_loss: 133.4165
+Epoch 16/20
+106/106 [==============================] - 367s - loss: 113.8776 - val\_loss: 133.0217
+Epoch 17/20
+106/106 [==============================] - 364s - loss: 110.9405 - val\_loss: 128.3541
+Epoch 18/20
+106/106 [==============================] - 364s - loss: 108.3736 - val\_loss: 128.3365
+Epoch 19/20
+106/106 [==============================] - 367s - loss: 106.2871 - val\_loss: 128.4831
+Epoch 20/20
+106/106 [==============================] - 369s - loss: 103.9919 - val\_loss: 129.1036
+
+    \end{Verbatim}
+
+     \#\#\# (OPTIONAL IMPLEMENTATION) Models 5+
+
+If you would like to try out more architectures than the ones above,
+please use the code cell below. Please continue to follow the same
+convention for saving the models; for the \(i\)-th sample model, please
+save the loss at \textbf{\texttt{model\_i.pickle}} and saving the
+trained model at \textbf{\texttt{model\_i.h5}}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{}\PYZsh{} (Optional) TODO: Try out some more models!}
+        \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} Feel free to use as many code cells as needed.}
+\end{Verbatim}
+
+
+     \#\#\# Compare the Models
+
+Execute the code cell below to evaluate the performance of the drafted
+deep learning models. The training and validation loss are plotted for
+each model.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{from} \PY{n+nn}{glob} \PY{k}{import} \PY{n}{glob}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{\PYZus{}pickle} \PY{k}{as} \PY{n+nn}{pickle}
+        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{n}{sns}\PY{o}{.}\PY{n}{set\PYZus{}style}\PY{p}{(}\PY{n}{style}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{white}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} obtain the paths for the saved model history}
+        \PY{n}{all\PYZus{}pickles} \PY{o}{=} \PY{n+nb}{sorted}\PY{p}{(}\PY{n}{glob}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{results/*.pickle}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} extract the name of each model}
+        \PY{n}{model\PYZus{}names} \PY{o}{=} \PY{p}{[}\PY{n}{item}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{7}\PY{p}{]} \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{all\PYZus{}pickles}\PY{p}{]}
+        \PY{c+c1}{\PYZsh{} extract the loss history for each model}
+        \PY{n}{valid\PYZus{}loss} \PY{o}{=} \PY{p}{[}\PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(} \PY{n+nb}{open}\PY{p}{(} \PY{n}{i}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rb}\PY{l+s+s2}{\PYZdq{}} \PY{p}{)} \PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{val\PYZus{}loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{all\PYZus{}pickles}\PY{p}{]}
+        \PY{n}{train\PYZus{}loss} \PY{o}{=} \PY{p}{[}\PY{n}{pickle}\PY{o}{.}\PY{n}{load}\PY{p}{(} \PY{n+nb}{open}\PY{p}{(} \PY{n}{i}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rb}\PY{l+s+s2}{\PYZdq{}} \PY{p}{)} \PY{p}{)}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{all\PYZus{}pickles}\PY{p}{]}
+        \PY{c+c1}{\PYZsh{} save the number of epochs used to train each model}
+        \PY{n}{num\PYZus{}epochs} \PY{o}{=} \PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{valid\PYZus{}loss}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{valid\PYZus{}loss}\PY{p}{)}\PY{p}{)}\PY{p}{]}
+        
+        \PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} plot the training loss vs. epoch for each model}
+        \PY{n}{ax1} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{121}\PY{p}{)}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{all\PYZus{}pickles}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,} 
+                    \PY{n}{train\PYZus{}loss}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n}{model\PYZus{}names}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} clean up the plot}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}  
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{max}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Epoch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Training Loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} plot the validation loss vs. epoch for each model}
+        \PY{n}{ax2} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{add\PYZus{}subplot}\PY{p}{(}\PY{l+m+mi}{122}\PY{p}{)}
+        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{all\PYZus{}pickles}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+            \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{num\PYZus{}epochs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{,} 
+                    \PY{n}{valid\PYZus{}loss}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n}{model\PYZus{}names}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} clean up the plot}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}  
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{max}\PY{p}{(}\PY{n}{num\PYZus{}epochs}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Epoch}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Validation Loss}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_34_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \textbf{Question 1:} Use the plot above to analyze the performance of
+each of the attempted architectures. Which performs best? Provide an
+explanation regarding why you think some models perform better than
+others.
+
+\textbf{Answer:} \#\#\# Comparing Models \textbar{}Model-Name \textbar{}
+\# of parameters \textbar{} Architecure\textbar{}Training Loss
+\textbar{} Validation Loss \textbar{}Category\textbar{} \textbar{}
+-\/-\/-\/-\/-\/- \textbar{} -\/-\/-\/-\/-\/- \textbar{} -\/-\/-\/-\/-\/-
+\textbar{}-\/-\/-\/-\/-\/- \textbar{}-\/-\/-\/-\/-\/-
+\textbar{}-\/-\/-\/-\/-\/- \textbar{} \textbar{}Model 0\textbar{}16,617
+\textbar{}RNN\textbar{}752.3071 \textbar{}722.2373\textbar{}
+Under-fit\textbar{} \textbar{}Model 1\textbar{}223,829\textbar{} RNN +
+TimeDistributed\textbar{}128.6848\textbar{}142.4832\textbar{}Good-fit\textbar{}
+\textbar{}Model 2\textbar{}442,029\textbar{}CNN + RNN +
+TimeDistributed\textbar{}76.3312\textbar{}139.0822\textbar{}
+Over-fit\textbar{} \textbar{}Model 3\textbar{}465,229\textbar{}RNN + RNN
++ TimeDistributed\textbar{}122.3033\textbar{}132.9569\textbar{}
+Good-fit\textbar{} \textbar{}Model 4\textbar{}446,029\textbar{}Bi-RNN +
+TimeDistributed\textbar{}103.9919\textbar{}129.1036\textbar{}
+Good-fit\textbar{} * Model 0 is underfitting because both its training
+loss and its validation loss are so high. * Model 1 is a good fit
+because its validation loss is relatively close to its training loss. *
+Model 2 has the lowest tarining loss. Model 2 is overfitting because its
+validation loss is much larger than its training loss.CNN is
+feed-forward network assumes no input structure, thus adding CNN to our
+network to train a sequential data may be the reason for overfitting. *
+Model 3 is a good fit because its validation loss is relatively close to
+its training loss. RNN exploits sequential data so adding one more RNN
+instead of CNN to our architecture results a good-fit model. * Model 4
+is a good fit because its validation loss is relatively close to its
+training loss. Standard recurrent neural network (RNNs) have
+restrictions as the future input information cannot be reached from the
+current state. On the contrary, Bi-RNNs do not require their input data
+to be fixed. Moreover, their future input information is reachable from
+the current state. The basic idea of BRNNs is to connect two hidden
+layers of opposite directions to the same output. By this structure, the
+output layer can get information from past and future states.For this
+reason Bi-RNN performs better than adding two RNNs to the
+architecture.(https://en.wikipedia.org/wiki/Bidirectional\_recurrent\_neural\_networks)
+
+     \#\#\# (IMPLEMENTATION) Final Model
+
+Now that you've tried out many sample models, use what you've learned to
+draft your own architecture! While your final acoustic model should not
+be identical to any of the architectures explored above, you are welcome
+to merely combine the explored layers above into a deeper architecture.
+It is \textbf{NOT} necessary to include new layer types that were not
+explored in the notebook.
+
+However, if you would like some ideas for even more layer types, check
+out these ideas for some additional, optional extensions to your model:
+
+\begin{itemize}
+\tightlist
+\item
+  If you notice your model is overfitting to the training dataset,
+  consider adding \textbf{dropout}! To add dropout to
+  \href{https://faroit.github.io/keras-docs/1.0.2/layers/recurrent/}{recurrent
+  layers}, pay special attention to the \texttt{dropout\_W} and
+  \texttt{dropout\_U} arguments. This
+  \href{http://arxiv.org/abs/1512.05287}{paper} may also provide some
+  interesting theoretical background.
+\item
+  If you choose to include a convolutional layer in your model, you may
+  get better results by working with \textbf{dilated convolutions}. If
+  you choose to use dilated convolutions, make sure that you are able to
+  accurately calculate the length of the acoustic model's output in the
+  \texttt{model.output\_length} lambda function. You can read more about
+  dilated convolutions in Google's
+  \href{https://arxiv.org/abs/1609.03499}{WaveNet paper}. For an example
+  of a speech-to-text system that makes use of dilated convolutions,
+  check out this GitHub
+  \href{https://github.com/buriburisuri/speech-to-text-wavenet}{repository}.
+  You can work with dilated convolutions
+  \href{https://keras.io/layers/convolutional/}{in Keras} by paying
+  special attention to the \texttt{padding} argument when you specify a
+  convolutional layer.
+\item
+  If your model makes use of convolutional layers, why not also
+  experiment with adding \textbf{max pooling}? Check out
+  \href{https://arxiv.org/pdf/1701.02720.pdf}{this paper} for example
+  architecture that makes use of max pooling in an acoustic model.
+\item
+  So far, you have experimented with a single bidirectional RNN layer.
+  Consider stacking the bidirectional layers, to produce a
+  \href{https://www.cs.toronto.edu/~graves/asru_2013.pdf}{deep
+  bidirectional RNN}!
+\end{itemize}
+
+All models that you specify in this repository should have
+\texttt{output\_length} defined as an attribute. This attribute is a
+lambda function that maps the (temporal) length of the input acoustic
+features to the (temporal) length of the output softmax layer. This
+function is used in the computation of CTC loss; to see this, look at
+the \texttt{add\_ctc\_loss} function in \texttt{train\_utils.py}. To see
+where the \texttt{output\_length} attribute is defined for the models in
+the code, take a look at the \texttt{sample\_models.py} file. You will
+notice this line of code within most models:
+
+\begin{verbatim}
+model.output_length = lambda x: x
+\end{verbatim}
+
+The acoustic model that incorporates a convolutional layer
+(\texttt{cnn\_rnn\_model}) has a line that is a bit different:
+
+\begin{verbatim}
+model.output_length = lambda x: cnn_output_length(
+        x, kernel_size, conv_border_mode, conv_stride)
+\end{verbatim}
+
+In the case of models that use purely recurrent layers, the lambda
+function is the identity function, as the recurrent layers do not modify
+the (temporal) length of their input tensors. However, convolutional
+layers are more complicated and require a specialized function
+(\texttt{cnn\_output\_length} in \texttt{sample\_models.py}) to
+determine the temporal length of their output.
+
+You will have to add the \texttt{output\_length} attribute to your final
+model before running the code cell below. Feel free to use the
+\texttt{cnn\_output\_length} function, if it suits your model.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} specify the model}
+        \PY{n}{model\PYZus{}end} \PY{o}{=} \PY{n}{final\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,}
+                                \PY{n}{filters}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{kernel\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}stride}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}border\PYZus{}mode}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{valid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{recur\PYZus{}layers}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+conv1d (Conv1D)              (None, None, 200)         354400    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_1 (BatchNormalization)    (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_1 (Dropout)          (None, None, 200)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_1 (Bidirection (None, None, 400)         481200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_0 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_2 (Dropout)          (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_2 (Bidirection (None, None, 400)         721200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_1 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_3 (Dropout)          (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_1 (TimeDist (None, None, 29)          11629     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 1,572,429
+Trainable params: 1,570,429
+Non-trainable params: 2,000
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+
+    \end{Verbatim}
+
+    Please execute the code cell below to train the neural network you
+specified in \texttt{input\_to\_softmax}. After the model has finished
+training, the model is
+\href{https://keras.io/getting-started/faq/\#how-can-i-save-a-keras-model}{saved}
+in the HDF5 file \texttt{model\_end.h5}. The loss history is
+\href{https://wiki.python.org/moin/UsingPickle}{saved} in
+\texttt{model\_end.pickle}. You are welcome to tweak any of the optional
+parameters while calling the \texttt{train\_model} function, but this is
+not required.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{train\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{model\PYZus{}end}\PY{p}{,} 
+                    \PY{n}{pickle\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}end.pickle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{save\PYZus{}model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{model\PYZus{}end.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                    \PY{n}{spectrogram}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)} \PY{c+c1}{\PYZsh{} change to False if you would like to use MFCC features}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Epoch 1/20
+106/106 [==============================] - 354s - loss: 261.0962 - val\_loss: 258.8122
+Epoch 2/20
+106/106 [==============================] - 353s - loss: 218.7849 - val\_loss: 189.9729
+Epoch 3/20
+106/106 [==============================] - 349s - loss: 187.5104 - val\_loss: 164.3762
+Epoch 4/20
+106/106 [==============================] - 351s - loss: 165.2164 - val\_loss: 144.3828
+Epoch 5/20
+106/106 [==============================] - 352s - loss: 150.5483 - val\_loss: 138.2705
+Epoch 6/20
+106/106 [==============================] - 348s - loss: 140.9800 - val\_loss: 129.2841
+Epoch 7/20
+106/106 [==============================] - 347s - loss: 133.1845 - val\_loss: 125.0527
+Epoch 8/20
+106/106 [==============================] - 351s - loss: 126.8746 - val\_loss: 123.3559
+Epoch 9/20
+106/106 [==============================] - 358s - loss: 121.5893 - val\_loss: 119.1523
+Epoch 10/20
+106/106 [==============================] - 354s - loss: 116.6651 - val\_loss: 116.8348
+Epoch 11/20
+106/106 [==============================] - 353s - loss: 112.4290 - val\_loss: 115.8975
+Epoch 12/20
+106/106 [==============================] - 354s - loss: 108.6276 - val\_loss: 113.3762
+Epoch 13/20
+106/106 [==============================] - 354s - loss: 104.5677 - val\_loss: 110.4229
+Epoch 14/20
+106/106 [==============================] - 351s - loss: 101.2947 - val\_loss: 110.2126
+Epoch 15/20
+106/106 [==============================] - 356s - loss: 98.2318 - val\_loss: 109.8336
+Epoch 16/20
+106/106 [==============================] - 356s - loss: 95.5937 - val\_loss: 108.7434
+Epoch 17/20
+106/106 [==============================] - 356s - loss: 92.4529 - val\_loss: 107.6985
+Epoch 18/20
+106/106 [==============================] - 354s - loss: 89.3627 - val\_loss: 106.9707
+Epoch 19/20
+106/106 [==============================] - 354s - loss: 87.1014 - val\_loss: 105.9843
+Epoch 20/20
+106/106 [==============================] - 355s - loss: 84.3467 - val\_loss: 106.9536
+
+    \end{Verbatim}
+
+    \textbf{Question 2:} Describe your final model architecture and your
+reasoning at each step.
+
+\textbf{Answer:}\\
+1. I used Bi-directional RNN because it seems promising in the ASR,
+because we want to take advantage of previous context.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  For each of the Bi-directional RNN layer, I add a batch-normalization
+  layer to speed up the training process.
+\item
+  I add the TimeDistributed layer at the end to better extract complex
+  pattern.
+\item
+  I added drop-out layers for my model not to overfit because we used
+  one Bi-directional RNN in model 4 and validation loss starts to
+  increase from epoch 19 to 20. I think Multiple Bi-directional RNN
+  would cause more if we don't use drop-out layers.
+\end{enumerate}
+
+     \#\# STEP 3: Obtain Predictions
+
+We have written a function for you to decode the predictions of your
+acoustic model. To use the function, please execute the code cell below.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{from} \PY{n+nn}{data\PYZus{}generator} \PY{k}{import} \PY{n}{AudioGenerator}
+        \PY{k+kn}{from} \PY{n+nn}{keras} \PY{k}{import} \PY{n}{backend} \PY{k}{as} \PY{n}{K}
+        \PY{k+kn}{from} \PY{n+nn}{utils} \PY{k}{import} \PY{n}{int\PYZus{}sequence\PYZus{}to\PYZus{}text}
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{Audio}
+        
+        \PY{k}{def} \PY{n+nf}{get\PYZus{}predictions}\PY{p}{(}\PY{n}{index}\PY{p}{,} \PY{n}{partition}\PY{p}{,} \PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{p}{,} \PY{n}{model\PYZus{}path}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Print a model\PYZsq{}s decoded predictions}
+        \PY{l+s+sd}{    Params:}
+        \PY{l+s+sd}{        index (int): The example you would like to visualize}
+        \PY{l+s+sd}{        partition (str): One of \PYZsq{}train\PYZsq{} or \PYZsq{}validation\PYZsq{}}
+        \PY{l+s+sd}{        input\PYZus{}to\PYZus{}softmax (Model): The acoustic model}
+        \PY{l+s+sd}{        model\PYZus{}path (str): Path to saved acoustic model\PYZsq{}s weights}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c+c1}{\PYZsh{} load the train and test data}
+            \PY{n}{data\PYZus{}gen} \PY{o}{=} \PY{n}{AudioGenerator}\PY{p}{(}\PY{p}{)}
+            \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{load\PYZus{}train\PYZus{}data}\PY{p}{(}\PY{p}{)}
+            \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{load\PYZus{}validation\PYZus{}data}\PY{p}{(}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} obtain the true transcription and the audio features }
+            \PY{k}{if} \PY{n}{partition} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{validation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{n}{transcr} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{valid\PYZus{}texts}\PY{p}{[}\PY{n}{index}\PY{p}{]}
+                \PY{n}{audio\PYZus{}path} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{valid\PYZus{}audio\PYZus{}paths}\PY{p}{[}\PY{n}{index}\PY{p}{]}
+                \PY{n}{data\PYZus{}point} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{normalize}\PY{p}{(}\PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{featurize}\PY{p}{(}\PY{n}{audio\PYZus{}path}\PY{p}{)}\PY{p}{)}
+            \PY{k}{elif} \PY{n}{partition} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{train}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{n}{transcr} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{train\PYZus{}texts}\PY{p}{[}\PY{n}{index}\PY{p}{]}
+                \PY{n}{audio\PYZus{}path} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{train\PYZus{}audio\PYZus{}paths}\PY{p}{[}\PY{n}{index}\PY{p}{]}
+                \PY{n}{data\PYZus{}point} \PY{o}{=} \PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{normalize}\PY{p}{(}\PY{n}{data\PYZus{}gen}\PY{o}{.}\PY{n}{featurize}\PY{p}{(}\PY{n}{audio\PYZus{}path}\PY{p}{)}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{Exception}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Invalid partition!  Must be }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{train}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ or }\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{validation}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                
+            \PY{c+c1}{\PYZsh{} obtain and decode the acoustic model\PYZsq{}s predictions}
+            \PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{.}\PY{n}{load\PYZus{}weights}\PY{p}{(}\PY{n}{model\PYZus{}path}\PY{p}{)}
+            \PY{n}{prediction} \PY{o}{=} \PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{expand\PYZus{}dims}\PY{p}{(}\PY{n}{data\PYZus{}point}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}
+            \PY{n}{output\PYZus{}length} \PY{o}{=} \PY{p}{[}\PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{.}\PY{n}{output\PYZus{}length}\PY{p}{(}\PY{n}{data\PYZus{}point}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{]} 
+            \PY{n}{pred\PYZus{}ints} \PY{o}{=} \PY{p}{(}\PY{n}{K}\PY{o}{.}\PY{n}{eval}\PY{p}{(}\PY{n}{K}\PY{o}{.}\PY{n}{ctc\PYZus{}decode}\PY{p}{(}
+                        \PY{n}{prediction}\PY{p}{,} \PY{n}{output\PYZus{}length}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} play the audio file, and display the true and predicted transcriptions}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{*}\PY{l+m+mi}{80}\PY{p}{)}
+            \PY{n}{Audio}\PY{p}{(}\PY{n}{audio\PYZus{}path}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{True transcription:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{transcr}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{*}\PY{l+m+mi}{80}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted transcription:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{int\PYZus{}sequence\PYZus{}to\PYZus{}text}\PY{p}{(}\PY{n}{pred\PYZus{}ints}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{*}\PY{l+m+mi}{80}\PY{p}{)}
+\end{Verbatim}
+
+
+    Use the code cell below to obtain the transcription predicted by your
+final model for the first example in the training dataset.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{get\PYZus{}predictions}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} 
+                        \PY{n}{partition}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{train}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                        \PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{final\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,}
+                                \PY{n}{filters}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{kernel\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}stride}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}border\PYZus{}mode}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{valid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{recur\PYZus{}layers}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} 
+                        \PY{n}{model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./results/model\PYZus{}end.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+conv1d (Conv1D)              (None, None, 200)         354400    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_1 (BatchNormalization)    (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_7 (Dropout)          (None, None, 200)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_5 (Bidirection (None, None, 400)         481200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_0 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_8 (Dropout)          (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_6 (Bidirection (None, None, 400)         721200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_1 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_9 (Dropout)          (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_3 (TimeDist (None, None, 29)          11629     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 1,572,429
+Trainable params: 1,570,429
+Non-trainable params: 2,000
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+--------------------------------------------------------------------------------
+True transcription:
+
+the last two days of the voyage bartley found almost intolerable
+--------------------------------------------------------------------------------
+Predicted transcription:
+
+the last two das of the voahe bartly found amlstin tolerbl
+--------------------------------------------------------------------------------
+
+    \end{Verbatim}
+
+    Use the next code cell to visualize the model's prediction for the first
+example in the validation dataset.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{get\PYZus{}predictions}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} 
+                        \PY{n}{partition}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{validation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                        \PY{n}{input\PYZus{}to\PYZus{}softmax}\PY{o}{=}\PY{n}{final\PYZus{}model}\PY{p}{(}\PY{n}{input\PYZus{}dim}\PY{o}{=}\PY{l+m+mi}{161}\PY{p}{,}
+                                \PY{n}{filters}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{kernel\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}stride}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,}
+                                \PY{n}{conv\PYZus{}border\PYZus{}mode}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{valid}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                \PY{n}{units}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,}
+                                \PY{n}{recur\PYZus{}layers}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} 
+                        \PY{n}{model\PYZus{}path}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./results/model\PYZus{}end.h5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+Layer (type)                 Output Shape              Param \#   
+=================================================================
+the\_input (InputLayer)       (None, None, 161)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+conv1d (Conv1D)              (None, None, 200)         354400    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bn\_1 (BatchNormalization)    (None, None, 200)         800       
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_13 (Dropout)         (None, None, 200)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_9 (Bidirection (None, None, 400)         481200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_0 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_14 (Dropout)         (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bidirectional\_10 (Bidirectio (None, None, 400)         721200    
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+bi\_bn\_bi\_rnn\_1 (BatchNormali (None, None, 400)         1600      
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+dropout\_15 (Dropout)         (None, None, 400)         0         
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+time\_distributed\_5 (TimeDist (None, None, 29)          11629     
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+softmax (Activation)         (None, None, 29)          0         
+=================================================================
+Total params: 1,572,429
+Trainable params: 1,570,429
+Non-trainable params: 2,000
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+None
+--------------------------------------------------------------------------------
+True transcription:
+
+out in the woods stood a nice little fir tree
+--------------------------------------------------------------------------------
+Predicted transcription:
+
+oatid tha o stot an li sethitil sfirtr
+--------------------------------------------------------------------------------
+
+    \end{Verbatim}
+
+    One standard way to improve the results of the decoder is to incorporate
+a language model. We won't pursue this in the notebook, but you are
+welcome to do so as an \emph{optional extension}.
+
+If you are interested in creating models that provide improved
+transcriptions, you are encouraged to download
+\href{http://www.openslr.org/12/}{more data} and train bigger, deeper
+models. But beware - the model will likely take a long while to train.
+For instance, training this
+\href{https://arxiv.org/pdf/1512.02595v1.pdf}{state-of-the-art} model
+would take 3-6 weeks on a single GPU!
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
