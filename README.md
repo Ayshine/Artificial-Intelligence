@@ -1,11 +1,6 @@
 # Artificial Intelligence
-
-- *AI is really about unleashing one of the most amazing things in the entire universe, intelligence.* 
-**Sebastian Thrun**
-
-- *AI is the discipline that deals with uncertainty and manages it in decision making*
+*AI is the discipline that deals with uncertainty and manages it in decision making*
 **Peter Norvig**
-
 AI program is called **Intelligent Agent** just like **AlphaGo**
 
 ![lphaGo](images/alphago.jpg  "go")
