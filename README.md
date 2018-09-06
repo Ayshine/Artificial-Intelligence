@@ -1,17 +1,16 @@
 # Artificial Intelligence
 
-*AI is really about unleashing one of the most amazing things in the entire universe, intelligence.* 
+- *AI is really about unleashing one of the most amazing things in the entire universe, intelligence.* 
 **Sebastian Thrun**
-*AI is the discipline that deals with uncertainty and manages it in decision making*
-**Peter Norvig**
 
-**Artificial intelligence (AI)**, sometimes called *machine intelligence*, is intelligence demonstrated by machines.
+- *AI is the discipline that deals with uncertainty and manages it in decision making*
+**Peter Norvig**
 
 AI program is called **Intelligent Agent** just like **AlphaGo**
 
 ![lphaGo](images/alphago.jpg  "go")
 
-you can learn more about **AlphaGo** by watching the documentary and reading the paper
+you can learn more about **AlphaGo** by watching the documentary and/or reading the paper
 
 - [Documentary](https://www.alphagomovie.com/)
 
@@ -30,11 +29,11 @@ This README is broken down into the following sections:
 - [Voice User Interface Capstone](#voice-user-interface-capstone)
 
 ## Sudoku ##
-In this project  we practiced two very important concepts of artificail intelligence, **constraint propagation** and **search**.
-Peter Norvig's [blogpost](http://norvig.com/sudoku.html) about Sudoku puzzle.
+In this project  we practiced two very important concepts of artificail intelligence, **constraint propagation** and **search**. We created  an **AI agent** that will solve any Sudoku puzzle.The algorithm fully used are based from the great [blogpost](http://norvig.com/sudoku.html) of Peter Norvig. 
+
 ## Isolation ##
 ## Planning ##
 ## Recognizer ##
 ## Computer Vision Capstone ##
 ## Natural Language Processing Capstone ##
-##Voice User Interface Capstone ##
+## Voice User Interface Capstone ##
