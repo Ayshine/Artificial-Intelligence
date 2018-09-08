@@ -1,5 +1,5 @@
 # Artificial Intelligence
-*AI is the discipline that deals with uncertainty and manages it in decision making*
+*AI is the discipline that deals with uncertainty and manages it in decision making* ...		
 **Peter Norvig**
 
 ![lphaGo](images/alphago.jpg  "go")
@@ -7,7 +7,6 @@
 AI program is called **Intelligent Agent** just like **AlphaGo**. You can learn more about **AlphaGo** by watching the documentary and/or reading the paper
 
 - [Documentary](https://www.alphagomovie.com/)
-
 - [Paper](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
 
 This repository is built to showcase completed classroom projects of Artificial Intelligence and Specializations Nanodegree offered by [Udacity](https://www.udacity.com/)
@@ -25,9 +24,29 @@ This README is broken down into the following sections:
 ## Sudoku ##
 In this project  we practiced two very important concepts of artificial intelligence, **constraint propagation** and **search**. We created  an **AI agent** that will solve any Sudoku puzzle. In this project, The goals are to implement the **naked twins** function, and write an AI agent that will solve the **Diagonal Sudoku** game.The algorithm fully used are based from the great [blogpost](http://norvig.com/sudoku.html) of Peter Norvig. 
 
-You can find more information about the implementation steps of this project on the project's own [README](https://github.com/Ayshine/Artificial-Intelligence/blob/master/Sudoku/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/aind-sudoku) for further information.
+You can find more information about the implementation steps of this project on the project's own [README](/Sudoku/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/aind-sudoku) for further information.
+
+**My Solution**
+- [Solution](Sudoku/solution.py)
 
 ## Isolation ##
+In this project, we implemented 
+
+- **minimax** search
+- minimax search with **alpha-beta pruning**
+- **iterative deepening** search
+- our own best position evaluation heuristic
+- our own alternate position evaluation heuristic
+- our own alternate position evaluation heuristic
+
+In the second part of this project we read a seminal paper in the field of Game-Playing and wrote a simple one page summary on it. In my case I read **AlphaGo** paper.
+
+You can find more information about the implementation steps of this project on the project's own [README](Isolation/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Isolation) for further information.
+
+**My Solution**
+- [Solution](Isolation/game_agent.py)
+- [Heuristic Analysis](Isolation/heuristic_analysis.pdf)
+- [Research Review](Isolation/research_review.pdf)
 ## Planning ##
 ## Recognizer ##
 ## Computer Vision Capstone ##
