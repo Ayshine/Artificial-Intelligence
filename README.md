@@ -23,7 +23,7 @@ This README is broken down into the following sections:
 - [Voice User Interface Capstone](#voice-user-interface-capstone)
 
 ## Sudoku ##
-In this project  we practiced two very important concepts of artificail intelligence, **constraint propagation** and **search**. We created  an **AI agent** that will solve any Sudoku puzzle. In this project, The goals are to implement the **naked twins** function, and write an AI agent that will solve the **Diagonal Sudoku** game.The algorithm fully used are based from the great [blogpost](http://norvig.com/sudoku.html) of Peter Norvig. 
+In this project  we practiced two very important concepts of artificial intelligence, **constraint propagation** and **search**. We created  an **AI agent** that will solve any Sudoku puzzle. In this project, The goals are to implement the **naked twins** function, and write an AI agent that will solve the **Diagonal Sudoku** game.The algorithm fully used are based from the great [blogpost](http://norvig.com/sudoku.html) of Peter Norvig. 
 
 You can find more information about the implementation steps of this project on the project's own [README](https://github.com/Ayshine/Artificial-Intelligence/blob/master/Sudoku/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/aind-sudoku) for further information.
 
