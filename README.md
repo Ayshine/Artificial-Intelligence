@@ -1,8 +1,8 @@
 # Artificial Intelligence
-*AI is the discipline that deals with uncertainty and manages it in decision making* ...		
+*AI is the discipline that deals with uncertainty and manages it in decision making*
 **Peter Norvig**
 
-![lphaGo](images/alphago.jpg  "go")
+![lphaGo](images/alphago.jpg  "AlphaGo")
 
 AI program is called **Intelligent Agent** just like **AlphaGo**. You can learn more about **AlphaGo** by watching the documentary and/or reading the paper
 
@@ -48,6 +48,16 @@ You can find more information about the implementation steps of this project on 
 - [Heuristic Analysis](Isolation/heuristic_analysis.pdf)
 - [Research Review](Isolation/research_review.pdf)
 ## Planning ##
+In this project, you will define a group of problems in classical PDDL (Planning Domain Definition Language) for the air cargo domain discussed in the lectures. You will then set up the problems for search, experiment with various automatically generated heuristics, including planning graph heuristics, to solve the problems, and then provide an analysis of the results. Additionally, you will write a short research review paper on the historical development of planning techniques and their use in artificial intelligence.
+
+
+You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+
+**My Solution**
+- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
+- [Planning Graph Solution](Planning/my_planning_graph.py)
+- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
+- [Research Review](Planning/research_review.pdf)
 ## Recognizer ##
 ## Computer Vision Capstone ##
 ## Natural Language Processing Capstone ##
