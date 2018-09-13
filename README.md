@@ -72,7 +72,7 @@ You can find more information about the implementation steps of this project on 
 
 **My Solution**
 
-- [ASLRecognizer Solution Notebook](Recognizer/asl_recognizer.ipynb)
+- [ASL Recognizer Solution Notebook](Recognizer/asl_recognizer.ipynb)
 - [Model Selector Solution](/Recognizer/my_model_selectors.py)
 - [Recognizer Solution](Recognizer/my_recognizer.py)
 ## Computer Vision Capstone ##
