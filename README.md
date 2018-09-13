@@ -9,7 +9,7 @@ AI program is called **Intelligent Agent** just like **AlphaGo**. You can learn 
 - [Documentary](https://www.alphagomovie.com/)
 - [Paper](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
 
-This repository is built to showcase completed classroom projects of Artificial Intelligence and Specializations Nanodegree offered by [Udacity](https://www.udacity.com/)
+This repository is built to showcase completed classroom projects of _Artificial Intelligence and Specializations Nanodegree_ offered by [Udacity](https://www.udacity.com/)
 
 This README is broken down into the following sections:
 
@@ -76,45 +76,34 @@ You can find more information about the implementation steps of this project on 
 - [Model Selector Solution](/Recognizer/my_model_selectors.py)
 - [Recognizer Solution](Recognizer/my_recognizer.py)
 ## Computer Vision Capstone ##
-Welcome to the Computer Vision capstone project in the AI Nanodegree program! In this project, you’ll combine your knowledge of computer vision techniques and deep learning to build and end-to-end facial keypoint recognition system. Facial keypoints include points around the eyes, nose, and mouth on any face and are used in many applications, from facial tracking to emotion recognition. Your completed code should be able to take in any image containing faces and identify the location of each face and their facial keypoints, as shown below.
+ In this project, we combinec our knowledge of **computer vision techniques** and **deep learning** to build and end-to-end **facial keypoint recognition** system. Facial keypoints include points around the eyes, nose, and mouth on any face and are used in many applications, from **facial tracking** to **emotion recognition**. Our completed code can take in any image containing faces and identify the location of each face and their facial keypoints. 
 
-
-Project Components
-The project will be broken up into a few main parts in one Python notebook:
-
-Part 1: Investigating OpenCV, pre-processing, and face detection
-
-Part 2 : Training a Convolutional Neural Network (CNN) to detect facial keypoints
-
-Part 3 : Putting parts 1 and 2 together to identify facial keypoints on any image!
-
-You'll also be given optional exercises that allow you to extend this project so that it works on video and allows you to implement fun face filters in real-time!
-You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+You can find more information about the implementation steps of this project on the project's own [README](CV-Capstone/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-CV-FacialKeypoints) for further information.
 
 **My Solution**
-- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
-- [Planning Graph Solution](Planning/my_planning_graph.py)
-- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
-- [Research Review](Planning/research_review.pdf)
+
+- [Solution Notebook](CV-Capstone/CV_project.ipynb)
+- [Solution HTML Report](/CV-Capstone/report.html)
+
 ## Natural Language Processing Capstone ##
-Machine translation is a popular topic in research with new papers coming out every year. Over the years of research, different methods were created, like rule-based, statistical, and example-based machine translation. With all this effort, it’s still an unsolved problem. However, neural networks have made a large leap forward in machine translation.
 
-In this notebook, you will build a deep neural network that functions as part of an end-to-end machine translation pipeline. Your completed pipeline will accept English text as input and return the French translation.
-You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+In this project, you built a **deep neural network** that functions as part of an end-to-end **machine translation** pipeline. Your completed pipeline will accept English text as input and return the French translation.
+
+You can find more information about the implementation steps of this project on the project's own [README](Nlp-Capstone/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/aind2-nlp-capstone) for further information.
 
 **My Solution**
-- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
-- [Planning Graph Solution](Planning/my_planning_graph.py)
-- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
-- [Research Review](Planning/research_review.pdf)
+
+- [Solution Notebook](Nlp-Capstone/machine_translation.ipynb)
+- [Solution HTML Report](Nlp-Capstone/machine_translation.html)
+
 ## Voice User Interface Capstone ##
-In this notebook, you will build a deep neural network that functions as part of an end-to-end automatic speech recognition (ASR) pipeline!
+In this project, we built a **deep neural network** that functions as part of an end-to-end **automatic speech recognition (ASR)** pipeline!
 
-We begin by investigating the LibriSpeech dataset that will be used to train and evaluate your models. Your algorithm will first convert any raw audio to feature representations that are commonly used for ASR. You will then move on to building neural networks that can map these audio features to transcribed text. After learning about the basic types of layers that are often used for deep learning-based approaches to ASR, you will engage in your own investigations by creating and testing your own state-of-the-art models. Throughout the notebook, we provide recommended research papers for additional reading and links to GitHub repositories with interesting implementations.
-You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+We begin by investigating the **LibriSpeech** dataset that will be used to train and evaluate our models. Our algorithm will first convert any raw audio to feature representations that are commonly used for ASR. Then we moved on to building **neural networks** that can map these audio features to transcribed text. After learning about the basic types of layers that are often used for deep learning-based approaches to ASR, we engaged in our own investigations by creating and testing our own state-of-the-art models.
+
+You can find more information about the implementation steps of this project on the project's own [README](VUI-Capstone/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-VUI-Capstone) for further information.
 
 **My Solution**
-- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
-- [Planning Graph Solution](Planning/my_planning_graph.py)
-- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
-- [Research Review](Planning/research_review.pdf)
+
+- [Solution Notebook](VUI-Capstone/vui_notebook.ipynb)
+- [Solution HTML Report](VUI-Capstone/report.htmll)
