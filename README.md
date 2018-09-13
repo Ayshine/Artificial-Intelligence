@@ -27,6 +27,7 @@ In this project  we practiced two very important concepts of artificial intellig
 You can find more information about the implementation steps of this project on the project's own [README](/Sudoku/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/aind-sudoku) for further information.
 
 **My Solution**
+
 - [Solution](Sudoku/solution.py)
 
 ## Isolation ##
@@ -44,24 +45,36 @@ In the second part of this project we read a seminal paper in the field of Game-
 You can find more information about the implementation steps of this project on the project's own [README](Isolation/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Isolation) for further information.
 
 **My Solution**
+
 - [Solution](Isolation/game_agent.py)
 - [Heuristic Analysis](Isolation/heuristic_analysis.pdf)
 - [Research Review](Isolation/research_review.pdf)
+
 ## Planning ##
-In this project, you will define a group of problems in classical PDDL (Planning Domain Definition Language) for the air cargo domain discussed in the lectures. You will then set up the problems for search, experiment with various automatically generated heuristics, including planning graph heuristics, to solve the problems, and then provide an analysis of the results. Additionally, you will write a short research review paper on the historical development of planning techniques and their use in artificial intelligence.
+In this project, we defined a group of problems in classical **PDDL** (Planning Domain Definition Language) for the air cargo domain discussed in the lectures.  then we set up the problems for **search**, experiment with various automatically generated heuristics, including **planning graph heuristics**, to solve the problems, and then we provided an analysis of the results. Additionally, we wrote a short **research review pape**r on the historical development of **planning techniques** and their use in artificial intelligence.
 
 
 You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
 
 **My Solution**
-- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
-- [Planning Graph Solution](Planning/my_planning_graph.py)
-- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
-- [Research Review](Planning/research_review.pdf)
-## Recognizer ##
-In this project, you will build a system that can recognize words communicated using the American Sign Language (ASL). You will be provided a preprocessed dataset of tracked hand and nose positions extracted from video. Your goal would be to train a set of Hidden Markov Models (HMMs) using part of this dataset to try and identify individual words from test sequences.
 
-As an optional challenge, you can incorporate Statistical Language Models (SLMs) that capture the conditional probability of particular sequences of words occurring. This will help you improve the recognition accuracy of your system.
+-  [Air Cargo Solution](Planning/my_air_cargo_problems.py)
+-  [Planning Graph Solution](Planning/my_planning_graph.py)
+-  [Heuristic Analysis](Planning/heuristic_analysis.pdf)
+-  [Research Review](Planning/research_review.pdf)
+
+## Recognizer ##
+In this project, we built a system that can recognize words communicated using the American Sign Language (ASL). We were provided a preprocessed dataset of tracked hand and nose positions extracted from video. Our goal was to train a set of **Hidden Markov Models (HMMs)** using part of this dataset to try and identify individual words from test sequences.
+
+As an optional challenge, we incorporated **Statistical Language Models (SLMs)** that capture the conditional probability of particular sequences of words occurring. This helped us improve the recognition accuracy of your system.
+
+You can find more information about the implementation steps of this project on the project's own [README](Recognizer/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Recognizer) for further information.
+
+**My Solution**
+
+- [ASLRecognizer Solution Notebook](Recognizer/asl_recognizer.ipynb)
+- [Model Selector Solution](/Recognizer/my_model_selectors.py)
+- [Recognizer Solution](Recognizer/my_recognizer.py)
 ## Computer Vision Capstone ##
 Welcome to the Computer Vision capstone project in the AI Nanodegree program! In this project, you’ll combine your knowledge of computer vision techniques and deep learning to build and end-to-end facial keypoint recognition system. Facial keypoints include points around the eyes, nose, and mouth on any face and are used in many applications, from facial tracking to emotion recognition. Your completed code should be able to take in any image containing faces and identify the location of each face and their facial keypoints, as shown below.
 
@@ -76,11 +89,32 @@ Part 2 : Training a Convolutional Neural Network (CNN) to detect facial keypoint
 Part 3 : Putting parts 1 and 2 together to identify facial keypoints on any image!
 
 You'll also be given optional exercises that allow you to extend this project so that it works on video and allows you to implement fun face filters in real-time!
+You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+
+**My Solution**
+- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
+- [Planning Graph Solution](Planning/my_planning_graph.py)
+- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
+- [Research Review](Planning/research_review.pdf)
 ## Natural Language Processing Capstone ##
 Machine translation is a popular topic in research with new papers coming out every year. Over the years of research, different methods were created, like rule-based, statistical, and example-based machine translation. With all this effort, it’s still an unsolved problem. However, neural networks have made a large leap forward in machine translation.
 
 In this notebook, you will build a deep neural network that functions as part of an end-to-end machine translation pipeline. Your completed pipeline will accept English text as input and return the French translation.
+You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+
+**My Solution**
+- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
+- [Planning Graph Solution](Planning/my_planning_graph.py)
+- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
+- [Research Review](Planning/research_review.pdf)
 ## Voice User Interface Capstone ##
 In this notebook, you will build a deep neural network that functions as part of an end-to-end automatic speech recognition (ASR) pipeline!
 
 We begin by investigating the LibriSpeech dataset that will be used to train and evaluate your models. Your algorithm will first convert any raw audio to feature representations that are commonly used for ASR. You will then move on to building neural networks that can map these audio features to transcribed text. After learning about the basic types of layers that are often used for deep learning-based approaches to ASR, you will engage in your own investigations by creating and testing your own state-of-the-art models. Throughout the notebook, we provide recommended research papers for additional reading and links to GitHub repositories with interesting implementations.
+You can find more information about the implementation steps of this project on the project's own [README](Planning/README.md) file. Also, You can visit the project's original [repository](https://github.com/udacity/AIND-Planning) for further information.
+
+**My Solution**
+- [Air Cargo Solution](Planning/my_air_cargo_problems.py)
+- [Planning Graph Solution](Planning/my_planning_graph.py)
+- [Heuristic Analysis](Planning/heuristic_analysis.pdf)
+- [Research Review](Planning/research_review.pdf)
