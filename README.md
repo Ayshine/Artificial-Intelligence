@@ -1,10 +1,10 @@
 # Artificial Intelligence
-*AI is the discipline that deals with uncertainty and manages it in decision making*
+*AI is the discipline that deals with uncertainty and manages it in decision making.*
 **Peter Norvig**
 
 ![lphaGo](images/alphago.jpg  "AlphaGo")
 
-AI program is called **Intelligent Agent** just like **AlphaGo**. You can learn more about **AlphaGo** by watching the documentary and/or reading the paper
+AI program is called **Intelligent Agent** just like **AlphaGo**. You can learn more about **AlphaGo** by watching the documentary and/or reading the paper.
 
 - [Documentary](https://www.alphagomovie.com/)
 - [Paper](https://storage.googleapis.com/deepmind-media/alphago/AlphaGoNaturePaper.pdf)
