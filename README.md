@@ -106,4 +106,4 @@ You can find more information about the implementation steps of this project on 
 **My Solution**
 
 - [Solution Notebook](VUI-Capstone/vui_notebook.ipynb)
-- [Solution HTML Report](VUI-Capstone/report.htmll)
+- [Solution HTML Report](VUI-Capstone/report.html)
